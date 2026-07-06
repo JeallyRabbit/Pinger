@@ -1,0 +1,100 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Pinger.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="using:Pinger.Converters"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Pinger.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Pinger">
+
+    <Window.Resources>
+        <conv:FailCounterToBrushConverter x:Key="FailCounterToBrushConverter" />
+    </Window.Resources>
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+        to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+
+
+    <Grid Margin="20"
+          RowDefinitions="Auto,*"
+          RowSpacing="10">
+            
+        <!-- Top input row -->
+        <StackPanel Grid.Row="0"
+                    
+                    Orientation="Horizontal"
+                    Spacing="10">
+
+            <TextBox x:Name="DeviceNameTextBox"
+                     Width="160"
+                     CornerRadius="6"
+                     Watermark="Device name" />
+
+            <TextBox x:Name="DeviceIpTextBox"
+                     Width="160"
+                     CornerRadius="6"
+                     Watermark="IP address" />
+
+            <Button Content="Add Device"
+            CornerRadius="6"
+                    Click="AddDevice_Click" />
+
+        </StackPanel>
+        <!-- Device list below -->
+        <ListBox Grid.Row="1"
+                 CornerRadius="8"
+                 ItemsSource="{Binding Devices}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Margin="4"
+                            Padding="8"
+                            CornerRadius="8"
+                            Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}">
+
+                        <Grid Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}"
+
+                              ColumnDefinitions="*,*,Auto">
+
+                            <StackPanel Grid.Column="0"
+                                        Orientation="Vertical">
+
+                                <TextBlock Text="{Binding Name}"
+                                           Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                           FontSize="20"
+                                           TextAlignment="Center"/>
+
+                                <TextBlock Text="{Binding Ip}"
+                                           Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                           FontSize="14"
+                                           TextAlignment="Center" />
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+
+
+
+</Window>
