@@ -90,3 +90,9 @@ C:\Users\aleks.karczewski\Documents\Pinger\Pinger\obj\Debug\net10.0\refint\Pinge
 C:\Users\aleks.karczewski\Documents\Pinger\Pinger\obj\Debug\net10.0\Pinger.pdb
 C:\Users\aleks.karczewski\Documents\Pinger\Pinger\obj\Debug\net10.0\Pinger.genruntimeconfig.cache
 C:\Users\aleks.karczewski\Documents\Pinger\Pinger\obj\Debug\net10.0\ref\Pinger.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\BouncyCastle.Cryptography.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\MailKit.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\MimeKit.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\runtimes\win\lib\net10.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\aleks.karczewski\Documents\Pinger\Pinger\obj\Debug\net10.0\Pinger.sourcelink.json

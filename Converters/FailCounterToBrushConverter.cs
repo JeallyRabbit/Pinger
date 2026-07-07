@@ -9,12 +9,13 @@ public class FailCounterToBrushConverter : IValueConverter
 {
     public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
+        
         if (value is int failCounter)
         {
             if (failCounter == 0)
                 return Brushes.LightGreen;
 
-            if (failCounter < 3)
+            if (failCounter < Pinger.ViewModels.MainWindowViewModel.maxFails)
                 return Brushes.Khaki;
 
             return Brushes.LightCoral;

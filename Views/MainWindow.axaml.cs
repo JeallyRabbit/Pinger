@@ -20,6 +20,9 @@ public partial class MainWindow : Window
             Position = NotificationPosition.TopRight,
             MaxItems = 3
         };
+
+
+        
     }
 
      private void ShowError(string message)
@@ -37,10 +40,6 @@ public partial class MainWindow : Window
         {
             string Name=DeviceNameTextBox.Text;
             string Ip=DeviceIpTextBox.Text;
-
-            bool onFieldEmpty=false;
-            bool isIpInvalid=false;
-            bool nameOrIpTaken=false;
 
             if(Name==string.Empty || Ip==string.Empty)
             {

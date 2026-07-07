@@ -25,27 +25,52 @@
     <Grid Margin="20"
           RowDefinitions="Auto,*"
           RowSpacing="10">
-            
-        <!-- Top input row -->
+
+
         <StackPanel Grid.Row="0"
-                    
-                    Orientation="Horizontal"
-                    Spacing="10">
+                    Orientation="Vertical"
+                    Spacing="8">
 
-            <TextBox x:Name="DeviceNameTextBox"
-                     Width="160"
-                     CornerRadius="6"
-                     Watermark="Device name" />
+            <!-- First row -->
+            <StackPanel Orientation="Horizontal"  Spacing="10">
 
-            <TextBox x:Name="DeviceIpTextBox"
-                     Width="160"
-                     CornerRadius="6"
-                     Watermark="IP address" />
+                <TextBox x:Name="DeviceNameTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="Device name" />
 
-            <Button Content="Add Device"
-            CornerRadius="6"
-                    Click="AddDevice_Click" />
+                <TextBox x:Name="DeviceIpTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="IP address" />
 
+                <Button Content="Add Device"
+                        CornerRadius="6"
+                        Click="AddDevice_Click" />
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"  Orientation="Horizontal" Spacing="10">
+                <TextBox x:Name="SmtpHostTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="SMTP Host" />
+
+                <TextBox x:Name="SmtpPortTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="SMTP Port (25)" />
+
+                <TextBox x:Name="MailSenderTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="Mail Sender" />
+
+                <TextBox x:Name="MailReceiverTextBox"
+                         Width="160"
+                         CornerRadius="6"
+                         Watermark="Mail Receiver" />
+            </StackPanel>
         </StackPanel>
         <!-- Device list below -->
         <ListBox Grid.Row="1"
