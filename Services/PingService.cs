@@ -13,7 +13,7 @@ public class PingService
             using Ping ping = new();
 
             PingReply reply = ping.Send(ip, timeoutMs);
-            Debug.WriteLine(ip.ToString()+" ping: "+ reply.Status.ToString());
+            //Debug.WriteLine(ip.ToString()+" ping: "+ reply.Status.ToString());
             return reply.Status == IPStatus.Success;
         }
         catch

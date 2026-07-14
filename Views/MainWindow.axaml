@@ -48,28 +48,40 @@
                         CornerRadius="6"
                         Click="AddDevice_Click" />
 
+                <Button Content="Save"
+                        CornerRadius="6"
+                        Click="Save_Click" />
+
             </StackPanel>
 
             <StackPanel Grid.Row="1"  Orientation="Horizontal" Spacing="10">
                 <TextBox x:Name="SmtpHostTextBox"
                          Width="160"
                          CornerRadius="6"
-                         Watermark="SMTP Host" />
+                         Watermark="SMTP Host"
+                         Text="{Binding SmtpHost, Mode=TwoWay}"
+                         />
 
                 <TextBox x:Name="SmtpPortTextBox"
                          Width="160"
                          CornerRadius="6"
-                         Watermark="SMTP Port (25)" />
+                         Watermark="SMTP Port (25)"
+                         Text="{Binding SmtpPort, Mode=TwoWay}"
+                          />
 
                 <TextBox x:Name="MailSenderTextBox"
                          Width="160"
                          CornerRadius="6"
-                         Watermark="Mail Sender" />
+                         Watermark="Mail Sender"
+                         Text="{Binding EmailSender, Mode=TwoWay}"
+                         />
 
                 <TextBox x:Name="MailReceiverTextBox"
                          Width="160"
                          CornerRadius="6"
-                         Watermark="Mail Receiver" />
+                         Watermark="Mail Receiver"
+                         Text="{Binding EmailReceiver, Mode=TwoWay}"
+                         />
             </StackPanel>
         </StackPanel>
         <!-- Device list below -->
@@ -91,7 +103,8 @@
                     <Border Margin="4"
                             Padding="8"
                             CornerRadius="8"
-                            Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}">
+                            Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}"
+                            DoubleTapped="DeviceCard_Click">
 
                         <Grid Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}"
 
@@ -109,8 +122,9 @@
                                            Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
                                            FontSize="14"
                                            TextAlignment="Center" />
-
+                                
                             </StackPanel>
+
 
                         </Grid>
                     </Border>

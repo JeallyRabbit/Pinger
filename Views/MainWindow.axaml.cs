@@ -3,62 +3,64 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using System.Diagnostics;
 using Pinger.ViewModels;
-using Avalonia.Controls.Notifications;
 using Pinger.Models;
+using Pinger.Helpers;
 
 namespace Pinger.Views;
 
 public partial class MainWindow : Window
 {
-    private readonly WindowNotificationManager _notificationManager;
+
+    private readonly NotificationHelper _notifications;
+
     public MainWindow()
     {
         InitializeComponent();
-
-        _notificationManager = new WindowNotificationManager(this)
-        {
-            Position = NotificationPosition.TopRight,
-            MaxItems = 3
-        };
+        _notifications = new NotificationHelper(this);
 
 
-        
     }
 
-     private void ShowError(string message)
+
+    private async void Save_Click(object? sender, RoutedEventArgs e)
     {
-        _notificationManager.Show(new Notification(
-            "Error",
-            message,
-            NotificationType.Error,
-            TimeSpan.FromSeconds(3)));
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            return;
+        }
+        await vm.SaveValuesAsync();
+        _notifications.ShowSuccess("Saved!");
     }
-
     private void AddDevice_Click(object? sender, RoutedEventArgs e)
     {
         if (DataContext is MainWindowViewModel vm)
         {
-            string Name=DeviceNameTextBox.Text;
-            string Ip=DeviceIpTextBox.Text;
+            TextBox? deviceNameTextBox = this.FindControl<TextBox>("DeviceNameTextBox");
+            TextBox? deviceIpTextBox = this.FindControl<TextBox>("DeviceIpTextBox");
 
-            if(Name==string.Empty || Ip==string.Empty)
+            string Name = deviceNameTextBox.Text;
+            string Ip = deviceIpTextBox.Text;
+
+
+
+            if (Name == string.Empty || Ip == string.Empty)
             {
-                ShowError("Fill both \"Device Name\" and \"IP address\" !");
+                _notifications.ShowError("Fill both \"Device Name\" and \"IP address\" !");
                 return;
             }
-            if(Helpers.DeviceValidator.IsValidIPv4(Ip)==false)
+            if (Helpers.DeviceValidator.IsValidIPv4(Ip) == false)
             {
-                ShowError("Ip in wrong format!");
+                _notifications.ShowError("Ip in wrong format!");
                 return;
             }
-            if(Helpers.DeviceValidator.IsDeviceIpAlreadySaved(vm.Devices,Ip)==true)
+            if (Helpers.DeviceValidator.IsDeviceIpAlreadySaved(vm.Devices, Ip) == true)
             {
-                ShowError("Ip already added!");
+                _notifications.ShowError("Ip already added!");
                 return;
             }
-            if(Helpers.DeviceValidator.IsDeviceNameAlreadySaved(vm.Devices,Name)==true)
+            if (Helpers.DeviceValidator.IsDeviceNameAlreadySaved(vm.Devices, Name) == true)
             {
-                ShowError("Name already added!");
+                _notifications.ShowError("Name already added!");
                 return;
             }
 
@@ -68,15 +70,37 @@ public partial class MainWindow : Window
 
             vm.Devices.Add(new Models.Device
             {
-                Name=DeviceNameTextBox.Text ?? "",
-                Ip=DeviceIpTextBox.Text ?? "",
-                FailCounter=0
+                Name = deviceNameTextBox.Text ?? "",
+                Ip = deviceIpTextBox.Text ?? "",
+                FailCounter = 0
             });
 
-            DeviceNameTextBox.Text = "";
-            DeviceIpTextBox.Text = "";
+            deviceNameTextBox.Text = "";
+            deviceIpTextBox.Text = "";
         }
     }
 
+
+    private void DeviceCard_Click(object? sender, RoutedEventArgs e)
+    {
+
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            return;
+        }
+
+
+        if (sender is not Border border)
+        {
+            return;
+        }
+
+        if (border.DataContext is not Device device)
+        {
+            return;
+        }
+
+        vm.Devices.Remove(device);
+    }
 
 }
