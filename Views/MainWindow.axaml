@@ -22,6 +22,7 @@
 
 
 
+
     <Grid Margin="20"
           RowDefinitions="Auto,*"
           RowSpacing="10">
@@ -56,9 +57,17 @@
                           ItemsSource="{Binding ThemeChoices}"
                           SelectedItem="{Binding ThemeChoice, Mode=TwoWay}"/>
 
+                <Slider Width="160"
+                        Minimum="{Binding MinUiScale}"
+                        Maximum="{Binding MaxUiScale}"
+                        TickFrequency="0.05"
+                        IsSnapToTickEnabled="True"
+                        Value="{Binding UiScale, Mode=TwoWay}" />
+
+
             </StackPanel>
 
-            <StackPanel Grid.Row="1"  Orientation="Horizontal" Spacing="10">
+            <StackPanel Orientation="Horizontal" Spacing="10">
                 <TextBox x:Name="SmtpHostTextBox"
                          Width="160"
                          CornerRadius="6"
@@ -88,60 +97,74 @@
                          />
             </StackPanel>
         </StackPanel>
-        <!-- Device list below -->
-        <ListBox Grid.Row="1"
-                 CornerRadius="8"
-                 ItemsSource="{Binding Devices}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+        <LayoutTransformControl Grid.Row="1">
 
-                    <Border Classes="device-card"
-                            DoubleTapped="DeviceCard_Click"
-                            ClipToBounds="True">
+            <LayoutTransformControl.LayoutTransform>
+                <ScaleTransform ScaleX="{Binding UiScale}"
+                                ScaleY="{Binding UiScale}" />
+            </LayoutTransformControl.LayoutTransform>
 
-                        <Grid ColumnDefinitions="8,*">
+            <!-- Device list below -->
+            <ListBox CornerRadius="8"
+                     ItemsSource="{Binding Devices}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
-                            <!-- Status color stripe -->
-                            <Border Grid.Column="0"
-                                    CornerRadius="16"
-                                    Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}" />
+                <!-- Fill top-to-bottom first, then create another column -->
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-                            <!-- Text content -->
-                            <StackPanel Grid.Column="1"
-                                        Orientation="Vertical"
-                                        Margin="10,6">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
 
-                                <TextBlock Text="{Binding Name}"
-                                           Foreground="{DynamicResource PingerTextBrush}"
-                                           FontSize="20"
-                                           FontWeight="SemiBold"
-                                           TextAlignment="Center"
-                                           HorizontalAlignment="Center" />
+                        <Border Classes="device-card"
+                                Width="180"
+                                DoubleTapped="DeviceCard_Click"
+                                ClipToBounds="True">
 
-                                <TextBlock Text="{Binding Ip}"
-                                           Foreground="{DynamicResource PingerMutedTextBrush}"
-                                           FontSize="14"
-                                           TextAlignment="Center"
-                                           HorizontalAlignment="Center" />
+                            <Grid ColumnDefinitions="8,*">
 
-                            </StackPanel>
+                                <!-- Status color stripe -->
+                                <Border Grid.Column="0"
+                                        CornerRadius="16"
+                                        Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}" />
 
-                        </Grid>
+                                <!-- Text content -->
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Margin="10,6">
 
-                    </Border>
+                                    <TextBlock Text="{Binding Name}"
+                                               Foreground="{DynamicResource PingerTextBrush}"
+                                               FontSize="20"
+                                               FontWeight="SemiBold"
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Center" />
 
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                                    <TextBlock Text="{Binding Ip}"
+                                               Foreground="{DynamicResource PingerMutedTextBrush}"
+                                               FontSize="14"
+                                               TextAlignment="Center"
+                                               HorizontalAlignment="Center" />
+
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+
+        </LayoutTransformControl>
+
 
     </Grid>
 

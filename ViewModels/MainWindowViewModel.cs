@@ -7,6 +7,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Pinger.Models;
 using Pinger.Services;
+using System.Diagnostics;
 
 namespace Pinger.ViewModels;
 
@@ -39,6 +40,10 @@ public partial class MainWindowViewModel : ViewModelBase
     private int smtpPort = 25;
     [ObservableProperty]
     private string themeChoice = "GruvBox";
+    [ObservableProperty]
+    private double uiScale=1.0;
+    public double MinUiScale => 0.5;
+public double MaxUiScale => 4.0;
 
     public MainWindowViewModel()
     {
