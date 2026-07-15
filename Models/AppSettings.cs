@@ -12,4 +12,5 @@ public class AppSettings
     public string EmailReceiver { get; set; } = "";
     public string SMTPHost {get;set;}="";
     public int SMTPPort {get; set; }=25;
+    public string ThemeChoice { get; set; } = "GruvBox";
 }

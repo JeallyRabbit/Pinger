@@ -7,8 +7,6 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Pinger.Models;
 using Pinger.Services;
-using System.Diagnostics;
-using Pinger.Helpers;
 
 namespace Pinger.ViewModels;
 
@@ -24,6 +22,12 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public static int maxFails = 5;
 
+    public string[] ThemeChoices { get; } =
+        {
+            "GruvBox",
+            "Catppuccin",
+            "RosePine"
+        };
 
     [ObservableProperty]
     private string emailSender = "";
@@ -33,9 +37,12 @@ public partial class MainWindowViewModel : ViewModelBase
     private string smtpHost = "";
     [ObservableProperty]
     private int smtpPort = 25;
+    [ObservableProperty]
+    private string themeChoice = "GruvBox";
+
     public MainWindowViewModel()
     {
-
+        ThemeService.ApplyTheme(ThemeChoice);
 
         _ = LoadSavedValuesAsync();
 
@@ -119,7 +126,10 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         _pingCancellationTokenSource.Cancel();
     }
-
+    partial void OnThemeChoiceChanged(string value)
+    {
+        ThemeService.ApplyTheme(value);
+    }
 
 
 

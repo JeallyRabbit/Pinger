@@ -52,6 +52,10 @@
                         CornerRadius="6"
                         Click="Save_Click" />
 
+                <ComboBox Width="160"
+                          ItemsSource="{Binding ThemeChoices}"
+                          SelectedItem="{Binding ThemeChoice, Mode=TwoWay}"/>
+
             </StackPanel>
 
             <StackPanel Grid.Row="1"  Orientation="Horizontal" Spacing="10">
@@ -67,7 +71,7 @@
                          CornerRadius="6"
                          Watermark="SMTP Port (25)"
                          Text="{Binding SmtpPort, Mode=TwoWay}"
-                          />
+                         />
 
                 <TextBox x:Name="MailSenderTextBox"
                          Width="160"
@@ -100,34 +104,41 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
-                    <Border Margin="4"
-                            Padding="8"
-                            CornerRadius="8"
-                            Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}"
-                            DoubleTapped="DeviceCard_Click">
+                    <Border Classes="device-card"
+                            DoubleTapped="DeviceCard_Click"
+                            ClipToBounds="True">
 
-                        <Grid Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}"
+                        <Grid ColumnDefinitions="8,*">
 
-                              ColumnDefinitions="*,*,Auto">
+                            <!-- Status color stripe -->
+                            <Border Grid.Column="0"
+                                    CornerRadius="16"
+                                    Background="{Binding FailCounter, Converter={StaticResource FailCounterToBrushConverter}}" />
 
-                            <StackPanel Grid.Column="0"
-                                        Orientation="Vertical">
+                            <!-- Text content -->
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Vertical"
+                                        Margin="10,6">
 
                                 <TextBlock Text="{Binding Name}"
-                                           Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                           Foreground="{DynamicResource PingerTextBrush}"
                                            FontSize="20"
-                                           TextAlignment="Center"/>
+                                           FontWeight="SemiBold"
+                                           TextAlignment="Center"
+                                           HorizontalAlignment="Center" />
 
                                 <TextBlock Text="{Binding Ip}"
-                                           Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                           Foreground="{DynamicResource PingerMutedTextBrush}"
                                            FontSize="14"
-                                           TextAlignment="Center" />
-                                
+                                           TextAlignment="Center"
+                                           HorizontalAlignment="Center" />
+
                             </StackPanel>
 
-
                         </Grid>
+
                     </Border>
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

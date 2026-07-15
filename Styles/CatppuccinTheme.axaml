@@ -1,0 +1,206 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Styles.Resources>
+
+        <!--
+        Catppuccin Mocha theme for Pinger
+        Include only ONE theme file in App.axaml at a time.
+        All theme files use the same resource keys so you can switch themes easily.
+        -->
+
+        <!-- Base colors -->
+        <Color x:Key="PingerBgColor">#1E1E2E</Color>
+        <Color x:Key="PingerBgAltColor">#181825</Color>
+        <Color x:Key="PingerSurfaceColor">#313244</Color>
+        <Color x:Key="PingerSurfaceAltColor">#45475A</Color>
+
+        <!-- Text colors -->
+        <Color x:Key="PingerTextColor">#CDD6F4</Color>
+        <Color x:Key="PingerMutedTextColor">#7F849C</Color>
+
+        <!-- Accent colors -->
+        <Color x:Key="PingerAccentColor">#CBA6F7</Color>
+        <Color x:Key="PingerAccentAltColor">#F5C2E7</Color>
+
+        <!-- Status colors -->
+        <Color x:Key="PingerSuccessColor">#A6E3A1</Color>
+        <Color x:Key="PingerWarningColor">#F9E2AF</Color>
+        <Color x:Key="PingerErrorColor">#F38BA8</Color>
+
+        <!-- Border colors -->
+        <Color x:Key="PingerBorderColor">#585B70</Color>
+
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="PingerBgBrush"
+                         Color="{StaticResource PingerBgColor}" />
+
+        <SolidColorBrush x:Key="PingerBgAltBrush"
+                         Color="{StaticResource PingerBgAltColor}" />
+
+        <SolidColorBrush x:Key="PingerSurfaceBrush"
+                         Color="{StaticResource PingerSurfaceColor}" />
+
+        <SolidColorBrush x:Key="PingerSurfaceAltBrush"
+                         Color="{StaticResource PingerSurfaceAltColor}" />
+
+        <SolidColorBrush x:Key="PingerTextBrush"
+                         Color="{StaticResource PingerTextColor}" />
+
+        <SolidColorBrush x:Key="PingerMutedTextBrush"
+                         Color="{StaticResource PingerMutedTextColor}" />
+
+        <SolidColorBrush x:Key="PingerAccentBrush"
+                         Color="{StaticResource PingerAccentColor}" />
+
+        <SolidColorBrush x:Key="PingerAccentAltBrush"
+                         Color="{StaticResource PingerAccentAltColor}" />
+
+        <SolidColorBrush x:Key="PingerSuccessBrush"
+                         Color="{StaticResource PingerSuccessColor}" />
+
+        <SolidColorBrush x:Key="PingerWarningBrush"
+                         Color="{StaticResource PingerWarningColor}" />
+
+        <SolidColorBrush x:Key="PingerErrorBrush"
+                         Color="{StaticResource PingerErrorColor}" />
+
+        <SolidColorBrush x:Key="PingerBorderBrush"
+                         Color="{StaticResource PingerBorderColor}" />
+
+        <!-- Common Avalonia/Fluent brush overrides used by many controls -->
+        <SolidColorBrush x:Key="SystemControlForegroundBaseHighBrush"
+                         Color="{StaticResource PingerTextColor}" />
+
+        <SolidColorBrush x:Key="SystemControlForegroundBaseMediumBrush"
+                         Color="{StaticResource PingerMutedTextColor}" />
+
+        <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush"
+                         Color="{StaticResource PingerSurfaceColor}" />
+
+        <SolidColorBrush x:Key="SystemControlBackgroundBaseLowBrush"
+                         Color="{StaticResource PingerBgAltColor}" />
+
+        <SolidColorBrush x:Key="SystemControlHighlightAccentBrush"
+                         Color="{StaticResource PingerAccentColor}" />
+
+    </Styles.Resources>
+
+
+    <!-- Main window -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource PingerBgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+    </Style>
+
+
+    <!-- Text -->
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+    </Style>
+
+
+    <!-- TextBox -->
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Padding" Value="8,4" />
+    </Style>
+
+    <Style Selector="TextBox:pointerover">
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerAccentBrush}" />
+    </Style>
+
+    <Style Selector="TextBox:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerAccentBrush}" />
+    </Style>
+
+
+    <!-- NumericUpDown -->
+    <Style Selector="NumericUpDown">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+
+
+    <!-- Buttons -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceAltBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="10,6" />
+    </Style>
+
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PingerAccentBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerBgBrush}" />
+    </Style>
+
+    <Style Selector="Button:pressed">
+        <Setter Property="Background" Value="{DynamicResource PingerAccentAltBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerBgBrush}" />
+    </Style>
+
+
+    <!-- ListBox -->
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="{DynamicResource PingerBgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource PingerTextBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:selected">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceAltBrush}" />
+    </Style>
+
+
+    <!-- Device card.
+         Use it like:
+         <Border Classes="device-card"> ... </Border>
+    -->
+    <Style Selector="Border.device-card">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="8" />
+        <Setter Property="Margin" Value="4" />
+    </Style>
+
+    <Style Selector="Border.device-card:pointerover">
+        <Setter Property="Background" Value="{DynamicResource PingerSurfaceAltBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerAccentBrush}" />
+    </Style>
+
+
+    <!-- Optional status card classes -->
+    <Style Selector="Border.device-card.online">
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerSuccessBrush}" />
+    </Style>
+
+    <Style Selector="Border.device-card.warning">
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerWarningBrush}" />
+    </Style>
+
+    <Style Selector="Border.device-card.offline">
+        <Setter Property="BorderBrush" Value="{DynamicResource PingerErrorBrush}" />
+    </Style>
+
+</Styles>

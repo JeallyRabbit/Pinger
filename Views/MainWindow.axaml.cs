@@ -1,7 +1,6 @@
-using System;
+
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using System.Diagnostics;
 using Pinger.ViewModels;
 using Pinger.Models;
 using Pinger.Helpers;
@@ -81,9 +80,9 @@ public partial class MainWindow : Window
     }
 
 
-    private void DeviceCard_Click(object? sender, RoutedEventArgs e)
-    {
 
+    private void DeviceCard_Click(object? sender, Avalonia.Input.TappedEventArgs e)
+    {
         if (DataContext is not MainWindowViewModel vm)
         {
             return;
@@ -102,5 +101,4 @@ public partial class MainWindow : Window
 
         vm.Devices.Remove(device);
     }
-
 }
