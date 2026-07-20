@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pinger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bfa209365d2710030b2cf4415f121aff4b052c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01a8cb126e733b45ddcc00d590f75074ae8a5e27")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pinger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pinger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

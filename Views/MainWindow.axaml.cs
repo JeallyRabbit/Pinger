@@ -4,6 +4,9 @@ using Avalonia.Interactivity;
 using Pinger.ViewModels;
 using Pinger.Models;
 using Pinger.Helpers;
+using System.Threading.Tasks;
+using System.Linq;
+using System;
 
 namespace Pinger.Views;
 
@@ -100,5 +103,39 @@ public partial class MainWindow : Window
         }
 
         vm.Devices.Remove(device);
+    }
+
+    private async void DeviceCard_RightClick(object? sender, Avalonia.Input.TappedEventArgs e)
+    {
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            return;
+        }
+
+        if (sender is not Border border)
+        {
+            return;
+        }
+
+        if (border.DataContext is not Device device)
+        {
+            return;
+        }
+
+
+        EditDeviceWindow editWindow = new(device,vm);
+
+        bool result = await editWindow.ShowDialog<bool>(this);
+
+        if (result)
+        {
+            _notifications.ShowSuccess("Device updated!");
+            
+        }
+
+
+    }
+    private void Border_RightTapped(object? sender, Avalonia.Input.TappedEventArgs e)
+    {
     }
 }

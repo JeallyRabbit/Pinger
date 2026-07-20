@@ -1,0 +1,45 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Pinger.Views.EditDeviceWindow"
+        Title="Edit device"
+        Width="360"
+        Height="250"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+    <Border Padding="16"
+            Background="{DynamicResource PingerBgBrush}">
+
+        <StackPanel Spacing="10">
+
+            <TextBlock Text="Device name" />
+
+            <TextBox x:Name="NameTextBox"
+                     Watermark="Device name" />
+
+            <TextBlock Text="IP address" />
+
+            <TextBox x:Name="IpTextBox"
+                     Watermark="IP address" />
+
+            <TextBlock x:Name="ErrorTextBlock"
+                       Foreground="{DynamicResource PingerErrorBrush}"
+                       TextWrapping="Wrap" />
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="8">
+
+                <Button Content="Cancel"
+                        Click="Cancel_Click" />
+
+                <Button Content="Save"
+                        Click="Save_Click" />
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</Window>

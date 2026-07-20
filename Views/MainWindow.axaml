@@ -125,6 +125,7 @@
                         <Border Classes="device-card"
                                 Width="180"
                                 DoubleTapped="DeviceCard_Click"
+                                RightTapped="DeviceCard_RightClick"
                                 ClipToBounds="True">
 
                             <Grid ColumnDefinitions="8,*">
