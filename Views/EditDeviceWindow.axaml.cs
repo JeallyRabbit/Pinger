@@ -86,6 +86,8 @@ public partial class EditDeviceWindow : Window
 
     private void Cancel_Click(object? sender, RoutedEventArgs e)
     {
+        
+
         Close(false);
     }
 }

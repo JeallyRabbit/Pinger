@@ -84,7 +84,7 @@ public partial class MainWindow : Window
 
 
 
-    private void DeviceCard_Click(object? sender, Avalonia.Input.TappedEventArgs e)
+    private async void DeviceCard_Remove(object? sender, Avalonia.Input.TappedEventArgs e)
     {
         if (DataContext is not MainWindowViewModel vm)
         {
@@ -102,10 +102,16 @@ public partial class MainWindow : Window
             return;
         }
 
-        vm.Devices.Remove(device);
+        ConfirmationWindow confWindow=new ConfirmationWindow(device.Name,device.Ip);
+        bool result=await confWindow.ShowDialog<bool>(this);
+        if(result)
+        {
+            vm.Devices.Remove(device);
+        }
+        
     }
 
-    private async void DeviceCard_RightClick(object? sender, Avalonia.Input.TappedEventArgs e)
+    private async void DeviceCard_Update(object? sender, Avalonia.Input.TappedEventArgs e)
     {
         if (DataContext is not MainWindowViewModel vm)
         {
@@ -133,9 +139,19 @@ public partial class MainWindow : Window
             
         }
 
-
     }
-    private void Border_RightTapped(object? sender, Avalonia.Input.TappedEventArgs e)
+
+
+    private async void Settings_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
+        if (DataContext is not MainWindowViewModel vm)
+        {
+            return;
+        }
+
+        SettingsWindow settingsWindow=new SettingsWindow(vm);
+
+        bool result=await settingsWindow.ShowDialog<bool>(this);
+        
     }
 }

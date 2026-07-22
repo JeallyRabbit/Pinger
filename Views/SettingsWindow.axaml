@@ -1,0 +1,112 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Pinger.ViewModels"
+        
+        x:DataType="vm:MainWindowViewModel"
+        x:Class="Pinger.Views.SettingsWindow"
+        Title="Edit device"
+        SizeToContent="WidthAndHeight"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+    
+
+    <Border Padding="16"
+            Background="{DynamicResource PingerBgBrush}">
+
+        <StackPanel Orientation="Vertical" Spacing="20">
+            <StackPanel Orientation="Horizontal" Spacing="20">
+
+
+                <Border Padding="16"
+                        BorderBrush="{DynamicResource PingerBorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="6">
+
+                    <StackPanel Spacing="10">
+
+                        <TextBlock Text="Smtp Settings:" FontSize="18"/>
+                        <TextBlock Text="Smtp Host:" />
+
+                        <TextBox x:Name="SmtpIPTextBox"
+                                 Watermark="Smtp Ip"
+                                 Text="{Binding SmtpIP, Mode=TwoWay}" />
+
+                        <TextBlock Text="Smtp Port:" />
+
+                        <TextBox x:Name="SmtpPortTextBox"
+                                 Watermark="Smtp Port"
+                                 Text="{Binding SmtpPort, Mode=TwoWay}"/>
+
+                        <TextBlock Text="Mail Sender:" />
+
+                        <TextBox x:Name="MailSenderTextBox"
+                                 Watermark="Email Sender"
+                                  Text="{Binding EmailSender, Mode=TwoWay}"/>
+
+                        <TextBlock Text="Mail Receiver:" />
+
+                        <TextBox x:Name="MailReceiverTextBox"
+                                 Watermark="Email Receiver"
+                                 Text="{Binding EmailReceiver, Mode=TwoWay}"/>
+
+
+
+
+
+                    </StackPanel>
+
+                </Border>
+
+                <Border Padding="16"
+                        BorderBrush="{DynamicResource PingerBorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="6">
+                    <StackPanel Spacing="10">
+
+                        <TextBlock Text="Ping Settings:" FontSize="18"/>
+
+                        <TextBlock Text="Ping timeout (ms):" />
+                        <TextBox x:Name="PingTimeoutTextBox"
+                                 Watermark="1000"
+                                 Text="{Binding PingTimeout,Mode=TwoWay}" />
+
+                        <TextBlock Text="Ping Interval (s):" />
+                        <TextBox x:Name="PingIntervalTextBox"
+                                 Watermark="5"
+                                 Text="{Binding PingInterval,Mode=TwoWay}" />
+
+                        <TextBlock Text="Fails to notification:" />
+                        <TextBox x:Name="PingMaxFailsTextBox"
+                                 Watermark="5"
+                                 Text="{Binding MaxFails, Mode=TwoWay}"/>
+
+                        <TextBlock Text="Notification Interval (m):" />
+                        <TextBox x:Name="NotificationIntervalTextBox"
+                                 Watermark="5"
+                                 Text="{Binding NotificationInterval,Mode=TwoWay}" />
+
+                    </StackPanel>
+
+                </Border>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="80">
+
+                <Button Content="Cancel"
+                        Click="Cancel_Click" />
+
+                <Button Content="Save"
+                        Click="Save_Click" />
+
+            </StackPanel>
+        </StackPanel>
+
+
+    </Border>
+
+
+</Window>

@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Pinger.Views.ConfirmationWindow"
+        Title=""
+        SizeToContent="WidthAndHeight"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+    <Border Padding="16"
+            Background="{DynamicResource PingerBgBrush}">
+
+        <StackPanel Spacing="10">
+
+
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Left"
+                        Spacing="8">
+
+                <TextBlock Text="Remove:"
+                           FontSize="24"
+                           FontWeight="Bold" />
+                <TextBlock x:Name="NameTextBlock" />
+                <TextBlock x:Name="IpTextBlock" />
+
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="8">
+
+                <Button Content="Cancel"
+                        Click="Cancel_Click" />
+
+                <Button Content="Confirm"
+                        Click="Confirm_Click" />
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</Window>

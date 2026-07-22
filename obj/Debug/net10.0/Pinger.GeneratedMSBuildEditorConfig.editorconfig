@@ -32,7 +32,7 @@ build_property.ProjectDepsFilePath = c:\Users\aleks.karczewski\Documents\Pinger\
 build_property.ProjectRuntimeConfigFilePath = c:\Users\aleks.karczewski\Documents\Pinger\Pinger\bin\Debug\net10.0\Pinger.runtimeconfig.json
 build_property.IntermediateOutputPath = obj\Debug\net10.0\
 build_property.PublishDir = bin\Debug\net10.0\publish\
-build_property.HasAvaloniaDiagnosticsSupport = 
+build_property.HasAvaloniaDiagnosticsSupport = true
 build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
 build_property._MvvmToolkitIsUsingWindowsRuntimePack = false
 build_property.CsWinRTComponent = 
@@ -66,10 +66,16 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Styles/RosePineTheme.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Views/ConfirmationWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Views/EditDeviceWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Views/SettingsWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [c:/Users/aleks.karczewski/Documents/Pinger/Pinger/Assets/avalonia-logo.ico]

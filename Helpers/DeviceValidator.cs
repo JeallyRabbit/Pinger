@@ -37,6 +37,15 @@ public static class DeviceValidator
         return true;
     }
 
+    public static bool isUint(string a="")
+    {
+        if(uint.TryParse(a, out uint number))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public static bool IsDeviceNameAlreadySaved(IEnumerable<Device> devices,string? name)
     {
         if (string.IsNullOrWhiteSpace(name))

@@ -10,7 +10,7 @@ namespace Pinger.Services;
 public class EmailNotificationService
 {
 
-    public async Task SendAsync(string senderEmail, string toEmail, string subject, string message, string smtpHost, int smtpPort)
+    public async Task SendAsync(string senderEmail, string toEmail, string subject, string message, string smtpIP, int smtpPort)
     {
         MimeMessage email = new();
         Debug.WriteLine("Sending mail to " + toEmail + " about " + subject);
@@ -27,7 +27,7 @@ public class EmailNotificationService
         using SmtpClient smtp = new();
         try
         {
-            await smtp.ConnectAsync(smtpHost, smtpPort);
+            await smtp.ConnectAsync(smtpIP, smtpPort);
             // await smtp.AuthenticateAsync(_senderEmail, _senderPassword);
             var a=smtp.Send(email);
             Debug.WriteLine("Sending result: " + a.ToString());

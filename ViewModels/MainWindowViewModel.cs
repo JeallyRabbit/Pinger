@@ -21,6 +21,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private readonly EmailNotificationService _emailNotificationService = new();
     public ObservableCollection<Device> Devices { get; } = new();
 
+    [ObservableProperty]
     public static int maxFails = 5;
 
     public string[] ThemeChoices { get; } =
@@ -35,15 +36,23 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string emailReceiver = "";
     [ObservableProperty]
-    private string smtpHost = "";
+    private string smtpIP = "";
     [ObservableProperty]
     private int smtpPort = 25;
     [ObservableProperty]
     private string themeChoice = "GruvBox";
     [ObservableProperty]
-    private double uiScale=1.0;
+    private double uiScale = 1.0;
+    [ObservableProperty]
+    private int pingTimeout = 5;
+    [ObservableProperty]
+    private int pingInterval = 5;
+    [ObservableProperty]
+    private int notificationInterval=10;
+
+
     public double MinUiScale => 0.5;
-public double MaxUiScale => 4.0;
+    public double MaxUiScale => 4.0;
 
     public MainWindowViewModel()
     {
@@ -85,7 +94,7 @@ public double MaxUiScale => 4.0;
                     string subject = $"Device {device.Name} went offline";
                     string text = subject + " at: " + System.DateTime.Now.ToString();
 
-                    await _emailNotificationService.SendAsync(EmailSender, EmailReceiver, subject, text, SmtpHost, SmtpPort);
+                    await _emailNotificationService.SendAsync(EmailSender, EmailReceiver, subject, text, SmtpIP, SmtpPort);
                 }
             }
 
@@ -100,10 +109,10 @@ public double MaxUiScale => 4.0;
         maxFails = settings.MaxFails;
         EmailSender = settings.EmailSender;
         EmailReceiver = settings.EmailReceiver;
-        SmtpHost = settings.SMTPHost;
+        SmtpIP = settings.SMTPHost;
         SmtpPort = settings.SMTPPort;
 
-        
+
         Devices.Clear();
 
         foreach (Device device in settings.Devices)
@@ -119,7 +128,7 @@ public double MaxUiScale => 4.0;
         {
             Devices = Devices.ToList(),
             MaxFails = maxFails,
-            SMTPHost = SmtpHost,
+            SMTPHost = SmtpIP,
             SMTPPort = SmtpPort,
             EmailReceiver = EmailReceiver,
             EmailSender = EmailSender
