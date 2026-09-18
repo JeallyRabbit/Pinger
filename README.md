@@ -1,5 +1,5 @@
 # Pinger 
-Yes: I formated readme with AI - app done and tested by me with help (search engine) of AI 
+
 Pinger is compatible with Windows 11 and Kubuntu 26.04. It should also work on Ubuntu 26.04 and Ubuntu-based distributions.
 
 ## Device Configuration
@@ -35,3 +35,5 @@ The application attempts to load this file when it starts.
 - **Ping Interval (s)** — how many seconds the application waits after one ping finishes before sending the next one.
 - **Fails to Notification** — the number of consecutive failed pings required before the application sends a notification.
 - **Notification Interval (minutes)** — how often the application sends a reminder while a device remains offline.
+
+Yes: I formated readme with AI - app done and tested by me with help (search engine) of AI 
