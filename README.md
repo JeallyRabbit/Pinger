@@ -1,5 +1,5 @@
-# Pinger ( Yes: I formated readme with AI)
-
+# Pinger 
+Yes: I formated readme with AI - app done and tested by me with help (search engine) of AI 
 Pinger is compatible with Windows 11 and Kubuntu 26.04. It should also work on Ubuntu 26.04 and Ubuntu-based distributions.
 
 ## Device Configuration
